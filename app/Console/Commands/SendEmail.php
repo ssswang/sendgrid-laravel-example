@@ -22,14 +22,14 @@ class SendEmail extends Command
                 $payload [] = array(
                     "recipient" => $data[0],
                     "reference" => $data[0],
-                    "meta" => []
+                    "meta" => [] //dynamic template variables
                 );
 
             }
             fclose($handle);
         }
         $helper = new SendgridHelper();
-        $helper->init('d-1c10027b9ea344679','sendgrid-key');
+        $helper->init('d-1c10027b9ea344679','sendgrid-key');//dynamic template id and key
         $helper->post($payload, $this->makePayloadDefault());
         
         dump("done");
@@ -38,7 +38,7 @@ class SendEmail extends Command
         $lcPayload = [];
         $lcPayload["from_email"] = 'x@x.a';
         $lcPayload["from_name"] = 'School of Learn';
-        //cc, bcc, reply-to
+        //add cc|cc|cc, bcc|bcc, reply-to here
         return $lcPayload;
     }
 }
