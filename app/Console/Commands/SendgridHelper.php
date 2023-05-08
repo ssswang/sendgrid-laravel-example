@@ -122,8 +122,7 @@ class SendgridHelper
                     dump($em['reference']." sent");
                 }
                 $count++;
-                if($count % config('sendgrid.limit') === 0){
-					dump("sleep x seconds because of your limit");
+                if($count % config('sendgrid.limit') === 0){//dump("sleep x seconds because of your limit");
                     sleep(config('sendgrid.sleep_time'));
                 }
             }
